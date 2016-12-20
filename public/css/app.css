@@ -1,0 +1,7 @@
+nav  { /* background-color:#ffffc0; */ 
+        background: -o-linear-gradient(#ffffc0, #FFFFff  ); /* For Opera 11.1 to 12.0 */ 
+        background: -moz-linear-gradient(#ffffc0, #FFFFff  ); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(#ffffc0, #FFFFff  ); /* Standard syntax (must be last) */
+        height: 15px; 
+      }
+      

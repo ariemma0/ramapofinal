@@ -1,0 +1,131 @@
+/* sets a border around entire page  */
+html{  }
+
+/* Header ============================ sets the size of the header area, image loaded to 100% of area  */
+header{   
+        padding:1px; 
+       ;
+      }
+     
+
+
+body  { margin:auto; 
+	    background-color:#ffffc0 ;
+	   min-width:450px
+      }
+ 
+nav  { /* background-color:#ffffc0; */ 
+        background: -o-linear-gradient(#ffffc0, #FFFFff  ); /* For Opera 11.1 to 12.0 */ 
+        background: -moz-linear-gradient(#ffffc0, #FFFFff  ); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(#ffffc0, #FFFFff  ); /* Standard syntax (must be last) */
+         
+      }
+      
+#filter{ background-image:url("stone1.png"); padding:6px;
+         
+         
+       }
+          
+form  {display: inline ; text-align:center}   
+.padx{padding:2px}
+.phone{font-size:small; }
+.dist,.moreline {font-size:small; }
+
+
+.search{ 
+         background:#71bafa ;
+         border-radius: 10px;
+         color:#000000; 	
+          
+}
+/*#searchcuisine{margin-left:140px;padding-right:10px; padding-left:10px*/
+#searchcuisine{padding-right:10px; padding-left:10px;margin:1px
+}
+#searchregion{padding-right:11px; padding-left:11px;margin:1px
+}
+#searchrange{padding-right:12px; padding-left:12px;margin:1px
+}
+
+.button_add, .button_detail, .button_delete, .button_update, .button_refresh{
+         border-radius: 50%;
+         width:18px;
+         height:18px;
+         cursor: pointer;
+       }
+.button_add, .button_refresh{  margin-left: 4px; width:20px;
+         height:20px; } 
+       
+.button_add:hover, .button_detail:hover, .button_delete:hover, .button_update:hover, .button_refresh:hover, .yelp:hover,.menu:hover,.restname:hover{
+              filter: invert(100%);
+          }       
+
+#addform{padding:20px;  text-align: left; position: relative;}
+hr{margin:10px; margin-left:0px}
+
+#main_del{position:fixed; height:160px;z-index:1;
+           width:300px;
+           background-color:#fffff0;
+         left: 60px; margin-top:50ev;
+         border-style: solid;
+	     border-width: 2px;  -webkit-filter: drop-shadow(10px 10px  10px #111111); /* Safari 6.0 - 9.0 */
+         filter: drop-shadow(10px 10px 10px #111111);
+         border-radius: 5px;
+         padding :20px;
+         padding-right:40px}  
+         
+#main_wait, #main_add, #main_update{z-index:1;
+          font-size:smaller; padding:10px; 
+         margin-top: 0px;   width:325px;
+         left: 60px; background-color:#fffff0;
+         border-style: solid;position: absolute;
+	     border-width: 2px;  -webkit-filter: drop-shadow(10px 10px  10px #111111); /* Safari 6.0 - 9.0 */
+         filter: drop-shadow(10px 10px 10px #111111);
+         border-radius: 5px;}          
+#main_update{  position: fixed;z-index:1}
+   
+#up_dbid,#refreshtype{display:none}
+
+ul, li{margin-left:10px;}
+#deletelabel{font-size:13px;}
+label{font-size:10px; margin-left:15px;text-align: left; }
+.inputa{margin:4px; padding:5px; height:20px;  font-size:small; width:259px; text-align: left;}
+.inputb{margin:4px; padding:5px; height:20px;  font-size:small; width:120px; text-align: left;}
+.right{  height:80vh; width:100%; background-color:#808080;         border-style: solid;
+	     border-width: 2px; }
+	     
+#tool1,#tool2 ,#tool3{
+    visibility: hidden;
+    width: 89px;
+    background-color: #71bafa ;
+    color: #fff;
+    text-align: left;
+    border-radius: 13px;
+    padding: 3px;
+    height:105px;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 0px; 
+    left: 0px;
+    -webkit-filter: drop-shadow(2px 5px  5px #111111); /* Safari 6.0 - 9.0 */
+         filter: drop-shadow(2px 5px 5px #111111) ;
+}
+#tool1{    height:140px;}
+#tool3{    height:80px;}
+#tooltipc1,#tooltipc2,#tooltipc3 {
+    position: relative;
+       
+}	     
+ 
+#box1,#box2,#box3{overflow:hidden;
+padding-right:8px;
+margin-bottom:2px;
+height:99px;
+  border-radius: 13px;
+}
+#box1{height:134px;}
+#box3{height:74px;}
+option{font-size:10px}
+#ad_cuisine,#up_cuisine{margin:0px; margin-top:4px ; padding:1px; height:69px;  font-size:small; width:112px;}
+.removepadding{padding-left:0px}
+.addr{height:20px;  font-size:12px; margin-top:4px ;padding-top:3px; padding-bottom:3px; padding-left:3px; margin-bottom:4px; width:113px}

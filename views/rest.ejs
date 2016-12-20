@@ -1,0 +1,341 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Go Eat!</title>
+  	
+  <!--<link rel='stylesheet' type = 'text/css' href='rest.css'/>-->
+ 	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/foundation.css">
+  <link rel='stylesheet' type = 'text/css' href='css/app.css'/>
+   <link rel='stylesheet' type = 'text/css' href='rest.css'/>
+  	<script src="js/vendor/modernizr.js"></script>
+    
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+ <!-- <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>  -->
+
+  
+</head>
+
+<body>
+	<span id='useraddress' hidden ><%= data[data.length-1].useraddress%></span> 
+    <div class="row">
+        <div class="medium-12 myheader columns">
+             <h1><img  src='3d_brick_text_effect2.png'/></h1>
+        </div>
+    </div>
+    
+
+    
+    
+   <div class="row">
+	  <div class="small-12 medium-8 large-7 columns"> 
+       <form id = 'refresh_form' action="start" method ="post">  
+         <div id="filter" class="row">
+	        <div class="large-offset-3 large-7 medium-offset-1 medium-8 small-9 columns" >  	
+               <span id="tooltipc1"> <span class="search" id="searchcuisine">Cuisine&#9662;</span> 
+                     <span id="tool1" ><select onchange="searchchanged()" id="box1" name="box1" multiple="multiple">
+                           <option value="*"  <% if (data[data.length-2].cuisine[0] == "1" ){ %> selected <% }%>  >---  All  ---</option>
+                           <option value="0"  <% if (data[data.length-2].cuisine[1] == "1" ){ %> selected <% }%>  >Chinese</option>
+                           <option value="1"  <% if (data[data.length-2].cuisine[2] == "1" ){ %> selected <% }%>  >Italian</option>
+                           <option value="2"  <% if (data[data.length-2].cuisine[3] == "1" ){ %> selected <% }%> >Pizzeria</option>
+                           <option value="3"  <% if (data[data.length-2].cuisine[4] == "1" ){ %> selected <% }%> >Seafood</option>
+                           <option value="4"  <% if (data[data.length-2].cuisine[5] == "1" ){ %> selected <% }%> >Bar and Grill</option>
+                           <option value="5"  <% if (data[data.length-2].cuisine[6] == "1" ){ %> selected <% }%> >Casual</option>
+                           <option value="6"  <% if (data[data.length-2].cuisine[7] == "1" ){ %> selected <% }%> >Steak House</option>
+                           <option value="7"  <% if (data[data.length-2].cuisine[8] == "1" ){ %> selected <% }%> >Fine dining</option>
+                           <option value="8"  <% if (data[data.length-2].cuisine[9] == "1" ){ %> selected <% }%> >Take out</option>
+                    </select></span></span> 
+             
+               <span id="tooltipc2"> <span  class="search" id="searchregion">Region&#9662;</span>  
+                     <span id="tool2" ><select id="box2" name="box2" onchange="searchchanged()" size="7">
+                           <option value="*" <% if (data[data.length-2].region == "*" ){ %> selected <% }%> >---  All  ---</option>
+                           <option value="0" <% if (data[data.length-2].region == "0" ){ %> selected <% }%>>Local</option>
+                           <option value="1" <% if (data[data.length-2].region == "1" ){ %> selected <% }%>>Jersey Shore</option>
+                           <option value="2" <% if (data[data.length-2].region == "2" ){ %> selected <% }%>>New York City</option>
+                           <option value="3" <% if (data[data.length-2].region == "3" ){ %> selected <% }%>>Hudson Valley</option>
+                           <option value="4" <% if (data[data.length-2].region == "4" ){ %> selected <% }%>>Morris</option>
+                           <option value="5" <% if (data[data.length-2].region == "5" ){ %> selected <% }%>>Meadowlands</option>
+                    </select></span></span> 
+                      
+               <span id="tooltipc3"> <span  class="search" id="searchrange">Range&#9662;</span>
+                           <span id="tool3" ><select id="box3" name="box3" onchange="searchchanged()" size="5">
+							   
+                           <option value="999" <% if (data[data.length-2].range == "999" ){ %> selected <% }%>>--  All  --</option>
+                           <option value="5"   <% if (data[data.length-2].range == "5"   ){ %> selected <% }%>>5 miles</option>
+                           <option value="10"  <% if (data[data.length-2].range == "10"  ){ %> selected <% }%>>10 miles</option>
+                           <option value="20"  <% if (data[data.length-2].range == "20"  ){ %> selected <% }%>>20 miles</option>
+                           <option value="50"  <% if (data[data.length-2].range == "50"  ){ %> selected <% }%>>50 miles</option>
+                    </select></span></span> 
+                           
+            </div>	
+            <div class="large-2 medium-3 small-3 columns" > 
+	          <span id='my_addbutton'><img class='button_add' src='buttonadd.png'  title='Add' alt='add'></span>
+	          <span id='my_refreshbutton'><img class='button_refresh' src='buttonrefresh.png'  title='Refresh' alt='refresh'></span> 
+	        </div>
+	     </div>
+	
+	   <!--> <form id = 'refresh_form' action="start" method ="post"></-->
+	         <input type="text" name="refreshtype" id="refreshtype" value="p" hidden />
+	     </form> 
+	      
+	      
+	      
+	     
+	
+
+   <section id='main_select'>
+        <div class="top">
+            
+        <div class="row">
+          
+            
+                <ul style="list-style-type:none">
+					<% for ( my in data.slice(0, (data.length-2)) ) { %>
+                   <li id="myline<%= my%>">
+                   	   <div class="topline">
+				   <div class="large-5 medium-5 small-5 columns padx">  		   
+						  <span id='my_dbid<%= my%>' style="display: none;"><%= data[my].rdbid%></span>
+                          <span id='my_namex<%=my%>'><a href="<%= data[my].rwebaddr%>" target='_blank' id='anchorname<%=my%>'><span class="restname" id='my_name<%=my%>'><%= data[my].rname%></span></span></a> 
+                          <span id='my_menu<%=my%>'><a href="<%= data[my].rmenu%>" target='_blank' id='anchormenu<%=my%>' ><img src='menu.png' class="menu" title='Menu' alt='menu' width="19" height="19"></span></a>
+                          <span id='my_yelp<%=my%>'><a href="<%= data[my].ryelp%>" target='_blank' id='anchoryelp<%=my%>'><img src='yelp.png'  class="yelp" title='Yelp' alt='yelp' ></span></a>
+                  	    </div><div class="large-5 medium-5 small-5 columns padx">   
+					      <span class="phone padx" id='my_phone<%= my%>'><%= data[my].rphone%></span>
+                
+					      <span class="dist padx" id='my_distance<%= my%>' data-numb="<%=my%>" ><%= data[my].rdistance%></span>
+					      <span class="dist padx" id='my_time<%= my%>' data-numb="<%=my%>" ></span>
+				        	    </div><div class="large-2 medium-2 small-2 columns padx"> 
+                          <span id='my_detailbutton<%=my%>'>                            <img class='button_detail' src='buttonmore.png'    data-numb="<%=my%>"  title='Details' alt='details'></span>
+                          <span id='my_updatebutton<%=my%>'>                            <img class='button_update' src='buttonupdate.png'  data-numb="<%=my%>" title='Update' alt='update'></span>
+                          <span id='my_deletebutton<%=my%>'>                            <img class='button_delete' src='buttondelete.png'  data-numb="<%=my%>" title='Click - Remove&#13DblClick - Delete' alt='delete'></span>   
+                          </div>
+                    </div>  
+                   
+                       <div id="moreline<%=my%>" class="moreline" hidden>
+                      <div class="small-offset-3 small-9 columns">  
+                          <span id='my_addr<%=my%>'><%= data[my].raddr%></span>
+                      
+                          <span id='my_town<%=my%>'><%= data[my].rtown%></span> 
+                      
+                          <span id='my_state<%=my%>'><%= data[my].rstate%></span> 
+                        </div><div class="small-offset-3 small-9 columns">     
+                          <span id='my_comment<%=my%>'><%= data[my].rcomment%></span> 
+                          <span class='maplocation' id='my_position<%= my%>' hidden data-numb="<%=my%>" ><%= data[my].rposition%></span>
+                          <span  id='my_region<%= my%>' hidden data-numb="<%= data[my].rregion%>" ></span>
+                                              
+                          <span  id='my_cuisine<%= my%>' hidden data-numb="<%= data[my].rcuisine%>" ></span>
+                      </div>   
+                       </div>  <hr /> 
+                                	  
+                   </li><% } %>
+               </ul>     
+            
+        
+    </section>
+
+   <section id='main_del' hidden>
+        <div class="top"><form>
+            <div class="row">
+				<div class="small-offset-1 small-11 large-offset-1 large-11 columns">  
+                  
+                  <label id="deletelabel">Are you sure you want to delete? </label>
+                 <input type="text" value="" id="deleteelement" disabled name="deleteelement"/>
+                  <a id="deletebutton" class="button alert">Delete</a>
+                 <a  id="deletebuttoncnl" class="button">Cancel</a>  
+            </div></div></form>
+        </div>
+      
+    </section>
+     <section id='main_add' hidden>
+       <div class="top">
+		 <div class="row">  
+            <form id = 'add_form' action="add" method ="post">
+                      
+              <div class="large-12 columns">  
+                 <label for="ad_name"><span  id="labeltext">Restaurant Name: </span >
+                 <input class="inputa" type="text"  name="ad_name" value="" id="ad_name" >  </label> 
+             </div>
+             <div class="large-12 columns">  
+                 <label for="ad_rwebaddr"><span  class="labeltext">Web Address:  </span  >
+                 <input class="inputa" type="text" value="" name="ad_rwebaddr" id="ad_rwebaddr" >   </label> 
+             </div>
+             <div class="large-12 columns">  
+                 <label for="ad_rmenu"><span class="labeltext">Menu Address:  </span>
+                 <input class="inputa" type="text" name="ad_rmenu" id="ad_rmenu" value="" />   </label> 
+             </div>
+             <div class="large-12 columns">  
+                 <label for="ad_yelp"><span class="labeltext">Yelp Address:   </span>
+                 <input class="inputa" type="text" name="ad_yelp" id="ad_yelp" value="" />  </label> 
+             </div>
+               <div class="large-6 small-6 columns">  
+                   <label for="ad_phone"><span class="labeltext">Phone #:  </span>
+                   <input  class="inputb" type="text" name="ad_phone" id="ad_phone" value="" />   </label> 
+               </div>
+               <div class="large-6 small-6 removepadding columns">  
+                   <label for="ad_region"><span class="labeltext">Region:  </span>
+                   <select id="ad_region" class="addr " name="ad_region">
+                        <option selected value=0>Local</option>
+                        <option          value=1>Jersey Shore</option>
+                        <option          value=2>New York City</option>
+                        <option          value=3>Hudson Valley</option>
+                        <option          value=4>Morris</option>
+                        <option          value=5>Meadowlands</option>
+                        <option          value=6>Other</option>
+                   </select> </label> 
+               </div>
+             <div class="large-12 columns">  
+                 <label for="ad_addr"><span class="labeltext">Address: </span>
+                 <input class="inputa" type="text" name="ad_addr" id="ad_addr" value="" />   </label> 
+             </div>
+              <div class="large-6 small-6 columns">
+				    <div class ="row">
+						 <div class="large-12 columns">
+					          <label for="ad_town"><span class="labeltext">Town:  </span>
+                              <input class="inputb" type="text" name="ad_town" id="ad_town" value="" /> </label>
+                         </div> 
+                         <div class="large-12 columns">  
+                              <label for="ad_state"><span class="labeltext">State:   </span>
+                              <input class="inputb" type="text" name="ad_state" id="ad_state" value="" /> </label>  
+                         </div>
+                    </div>
+               </div>                  
+               <div class="large-6 small-6 removepadding columns">  
+					<label ><span class="labeltext">Cuisuine:  </span>
+					<select id='ad_cuisine' name='ad_cuisine' size=4 multiple>
+                           <option value=0>Chinese</option>
+                           <option value=1>Italian</option>
+                           <option value=2>Pizzeria</option>
+                           <option value=3>Seafood</option>
+                           <option value=4>Bar and Grill</option>
+                           <option value=5>Casual</option>
+                           <option value=6>Steak House</option>
+                           <option value=7>Fine dining</option>
+                           <option value=8>Take out</option>
+                    </select></label>
+                </div>
+               <div class="large-12 columns">  
+                   <label for="ad_comment"><span class="labeltext">Comments:  </span>
+                   <input class="inputa" type="text" name="ad_comment" id="ad_comment"  value=""/></p>  </label>
+               </div>
+               <div class="large-12 columns">  
+                  <p hidden><input hidden type="text" name="ad_position" id="ad_position" value=""  /></p>
+                  <p hidden><input hidden type="text" name="ad_distance" id="ad_distance" value=""  /></p>       
+                  <p>   <a id="addbuttonmy"   class="button success" >Add</a>
+                        <a  id="addbuttoncnl" class="button">Cancel</a>     
+             <!--      <button type='button' onclick="add_confirm ()">Add</button>  
+                   <button type='button' onclick="add_cancel ()">Cancel</button>  <-->
+                </p>
+              </div>
+            
+        </form>
+       </div>
+      </div>
+    </section>
+    <section id='main_update' hidden>
+        <div class="top">
+          <div class="row">   
+            <form>
+			   <div class="large-12 columns">  	
+                   <input type="text" name="up_dbid" id="up_dbid" value="" hidden disabled/>
+                   <label for="up_name">Restaurant Name:  
+                   <input type="text" class="inputa" name="up_name" id="up_name" value="" /></label> 
+               </div>
+               <div class="large-12 columns">  
+                   <label for="up_rwebaddr">Web Address:  
+                   <input type="text" class="inputa" name="up_rwebaddr" id="up_rwebaddr" value="" /></label>
+               </div>
+               <div class="large-12 columns">   
+                   <label for="up_rmenu">Menu Address:  
+                   <input type="text" class="inputa" name="up_rmenu" id="up_rmenu" value="" /></label>
+               </div>
+               <div class="large-12 columns">   
+                   <label for="up_yelp">Yelp Address:  
+                   <input type="text" class="inputa" name="up_yelp" id="up_yelp" /></label>
+               </div>
+               <div class="large-6 small-6 columns">      
+                   <label for="up_phone">Phone #:  
+                   <input type="text" class="inputb" name="up_phone" id="up_phone"/></label>
+               </div>  
+               <div class="large-6 small-6 removepadding columns">  
+                   <label for="up_region"><span class="labeltext">Region:  </span>
+                   <select id="up_region" class="addr " name="up_region">
+                        <option value=0>Local</option>
+                        <option value=1>Jersey Shore</option>
+                        <option value=2>New York City</option>
+                        <option value=3>Hudson Valley</option>
+                        <option value=4>Morris</option>
+                        <option value=5>Meadowlands</option>
+                        <option value=6>Other</option>
+                   </select> </label> 
+               </div>
+               <div class="large-12 columns">  
+                   <label for="up_addr">Address:
+                   <input type="text" class="inputa" name="up_addr" id="up_addr"  /> </label>
+               </div>
+                <div class="large-6 small-6 columns">
+				    <div class ="row">
+						 <div class="large-12 columns">
+                            <label for="up_town">Town:
+                            <input type="text" class="inputb" name="up_town" id="up_town"/></label>
+                         </div> 
+                         <div class="large-12 columns">  
+                            <label for="up_state">State:  
+                            <input type="text" class="inputb" name="up_state" id="up_state"  /> </label>
+                         </div>
+                     </div>
+                 </div>                  
+                <div class="large-6 small-6 removepadding columns">  
+					<label ><span class="labeltext">Cuisuine:  </span>
+					<select id='up_cuisine' name='up_cuisine' size=4 multiple>
+                           <option value=0>Chinese</option>
+                           <option value=1>Italian</option>
+                           <option value=2>Pizzeria</option>
+                           <option value=3>Seafood</option>
+                           <option value=4>Bar and Grill</option>
+                           <option value=5>Casual</option>
+                           <option value=6>Steak House</option>
+                           <option value=7>Fine dining</option>
+                           <option value=8>Take out</option>
+                    </select></label>
+                </div>
+               <div class="large-12 columns">  
+                   <label for="up_comment">Comments: 
+                   <input type="text" class="inputa" name="up_comment" id="up_comment"  />   </label>
+               </div>
+               <div class="large-12 columns">  
+                   <p hidden><input hidden type="text" name="up_position" id="up_position" value=""  /></p>   
+                   <p hidden><input hidden type="text" name="up_distance" id="up_distance" value=""  /></p>    
+                   <p>  <a id="upbuttonmy"   class="button success" >Save</a>
+                        <a  id="upbuttoncnl" class="button">Cancel</a>     
+                   </p>
+               </div>
+           </form>
+         </div>
+      </div>
+    </section>
+     <section id='main_wait' hidden>
+        <div class="top">
+            <p> Waiting on server </p>
+        </div>
+      </section>      
+     </div>
+        
+	  <div class="small-12 medium-4 larger-5 columns"> 
+        <section >	
+		      <div id='map' class='right' name='map' >
+              </div>
+     </section>       </div>  
+	   <script src='rest.js'></script>
+   <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBOkiblr2va4J5cNumQx7mPrtnAyvHOyQ0&callback=initMap">
+    </script>
+    
+ </div>
+ <script src="js/foundation.min.js"></script>
+  <script>
+	$(document).foundation();
+</script>
+
+</body>    
+</html>
