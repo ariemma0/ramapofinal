@@ -8,11 +8,10 @@ var bodyParser = require('body-parser');
 var ex_session = require('express-session');
 var bcrypt = require("bcrypt-nodejs");
 var flash      = require('connect-flash');
-
-Object.assign=require('object-assign');
-
+Object.assign = require('object-assign');
+//var port = process.env.PORT || 8080
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
-    ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
+    ip =   process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 
 // Set up passport to help with user authentication (guest/password)
 var passport = require('passport');
@@ -22,14 +21,18 @@ var Db = require('mongodb').Db,
     MongoClient = require('mongodb').MongoClient,
     Server = require('mongodb').Server,
     ReplSetServers = require('mongodb').ReplSetServers
+    assert = require('assert');
 var ObjectID = require('mongodb').ObjectID 
-	
-var db = new Db('db_ramapo_final', new Server('172.30.200.35', 27017));
+//mongodb://<dbuser>:<dbpassword>@ds141078.mlab.com:41078/db_ramapo_final
+// var db = new Db('db_ramapo_final', new Server('localhost', 27017));
+var db = new Db('db_ramapo_final',new Server('ds141078.mlab.com', 41078));
   db.open(function(err, db) {
       console.log("Connected correctly to server.");
       if (err)  console.log("Error " + err);
       db_rest = db.collection("db_rest_list");
-	
+	      // Authenticate
+      db.authenticate('ariemma', 'fredarie', function(err, result) {
+        assert.equal(true, result);});
   });	  
 	
 	

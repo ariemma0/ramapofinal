@@ -19,6 +19,8 @@
     "bcrypt-nodejs" : "latest",
     "passport" : "~0.1.17",     
     "passport-local" : "~0.1.6", 
-    "connect-flash" : "*"
+    "connect-flash" : "*",
+	"assert" : "*",
+	"object-assign" : "*"
 	}
 }
