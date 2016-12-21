@@ -9,6 +9,11 @@ var ex_session = require('express-session');
 var bcrypt = require("bcrypt-nodejs");
 var flash      = require('connect-flash');
 
+Object.assign=require('object-assign');
+
+var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
+    ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
+
 // Set up passport to help with user authentication (guest/password)
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
