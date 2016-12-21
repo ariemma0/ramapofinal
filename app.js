@@ -24,7 +24,7 @@ var Db = require('mongodb').Db,
     ReplSetServers = require('mongodb').ReplSetServers
 var ObjectID = require('mongodb').ObjectID 
 	
-var db = new Db('db_ramapo_final', new Server(172.30.200.35, 27017));
+var db = new Db('db_ramapo_final', new Server('172.30.200.35', 27017));
   db.open(function(err, db) {
       console.log("Connected correctly to server.");
       if (err)  console.log("Error " + err);
